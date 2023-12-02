@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="db_supermarketEntities1">
+    <EntitySetMapping Name="Admains">
+      <EntityTypeMapping TypeName="Model.Admain">
+        <MappingFragment StoreEntitySet="Admain">
+          <ScalarProperty Name="Admain_Id" ColumnName="Admain_Id" />
+          <ScalarProperty Name="Admain_F_Name" ColumnName="Admain_F_Name" />
+          <ScalarProperty Name="Admain_L_Name" ColumnName="Admain_L_Name" />
+          <ScalarProperty Name="Admain_Phone" ColumnName="Admain_Phone" />
+          <ScalarProperty Name="Admain_Salary" ColumnName="Admain_Salary" />
+          <ScalarProperty Name="Admain_Shift" ColumnName="Admain_Shift" />
+          <ScalarProperty Name="Admain_Email" ColumnName="Admain_Email" />
+          <ScalarProperty Name="Admain_Password" ColumnName="Admain_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Model.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+          <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+          <ScalarProperty Name="Customer_Phone" ColumnName="Customer_Phone" />
+          <ScalarProperty Name="Customer_Address" ColumnName="Customer_Address" />
+          <ScalarProperty Name="Customer_Email" ColumnName="Customer_Email" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="Model.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="Employee_F_Name" ColumnName="Employee_F_Name" />
+          <ScalarProperty Name="Employee_L_Name" ColumnName="Employee_L_Name" />
+          <ScalarProperty Name="Employee_Phone" ColumnName="Employee_Phone" />
+          <ScalarProperty Name="Employee_Position" ColumnName="Employee_Position" />
+          <ScalarProperty Name="Employee_Email" ColumnName="Employee_Email" />
+          <ScalarProperty Name="Employee_Hiredate" ColumnName="Employee_Hiredate" />
+          <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+          <ScalarProperty Name="Employee_salary" ColumnName="Employee_salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orderrs">
+      <EntityTypeMapping TypeName="Model.Orderr">
+        <MappingFragment StoreEntitySet="Orderr">
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+          <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
+          <ScalarProperty Name="Order_name" ColumnName="Order_name" />
+          <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Model.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Product_Id" ColumnName="Product_Id" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Product_price" ColumnName="Product_price" />
+          <ScalarProperty Name="Sellf_Id" ColumnName="Sellf_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

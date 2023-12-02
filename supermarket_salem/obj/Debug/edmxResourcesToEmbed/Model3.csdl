@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admain">
+    <Key>
+      <PropertyRef Name="Admain_Id" />
+    </Key>
+    <Property Name="Admain_Id" Type="Int32" Nullable="false" />
+    <Property Name="Admain_F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Admain_L_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Admain_Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Admain_Salary" Type="Int32" />
+    <Property Name="Admain_Shift" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Admain_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Admain_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+    <Property Name="Customer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Id" Type="Int32" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Customer__Employ__4222D4EF" FromRole="Customer" ToRole="Employees" />
+    <NavigationProperty Name="Orderrs" Relationship="Self.FK__Orderr__Customer__44FF419A" FromRole="Customer" ToRole="Orderr" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="Int32" Nullable="false" />
+    <Property Name="Employee_F_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_L_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Position" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Employee_Hiredate" Type="DateTime" Precision="0" />
+    <Property Name="Department_Id" Type="Int32" />
+    <Property Name="Employee_salary" Type="Int32" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Employ__4222D4EF" FromRole="Employees" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Orderr">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="Int32" Nullable="false" />
+    <Property Name="Order_Date" Type="DateTime" Precision="0" />
+    <Property Name="Order_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer_Id" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Orderr__Customer__44FF419A" FromRole="Orderr" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="Int32" Nullable="false" />
+    <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_price" Type="Int32" />
+    <Property Name="Sellf_Id" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__Customer__Employ__4222D4EF">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orderr__Customer__44FF419A">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Orderr" Type="Self.Orderr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_Id" />
+      </Principal>
+      <Dependent Role="Orderr">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_supermarketEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admains" EntityType="Self.Admain" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Orderrs" EntityType="Self.Orderr" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <AssociationSet Name="FK__Customer__Employ__4222D4EF" Association="Self.FK__Customer__Employ__4222D4EF">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orderr__Customer__44FF419A" Association="Self.FK__Orderr__Customer__44FF419A">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Orderr" EntitySet="Orderrs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_supermarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admain">
+    <Key>
+      <PropertyRef Name="Admain_Id" />
+    </Key>
+    <Property Name="Admain_Id" Type="int" Nullable="false" />
+    <Property Name="Admain_F_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Admain_L_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Admain_Phone" Type="varchar" MaxLength="15" />
+    <Property Name="Admain_Salary" Type="int" />
+    <Property Name="Admain_Shift" Type="varchar" MaxLength="10" />
+    <Property Name="Admain_Email" Type="varchar" MaxLength="50" />
+    <Property Name="Admain_Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Customer_Id" Type="int" Nullable="false" />
+    <Property Name="Customer_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Customer_Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Customer_Address" Type="varchar" MaxLength="150" />
+    <Property Name="Customer_Email" Type="varchar" MaxLength="50" />
+    <Property Name="Employee_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="Employee_Id" />
+    </Key>
+    <Property Name="Employee_Id" Type="int" Nullable="false" />
+    <Property Name="Employee_F_Name" Type="varchar" MaxLength="150" />
+    <Property Name="Employee_L_Name" Type="varchar" MaxLength="150" />
+    <Property Name="Employee_Phone" Type="varchar" MaxLength="20" />
+    <Property Name="Employee_Position" Type="varchar" MaxLength="150" />
+    <Property Name="Employee_Email" Type="varchar" MaxLength="150" />
+    <Property Name="Employee_Hiredate" Type="date" />
+    <Property Name="Department_Id" Type="int" />
+    <Property Name="Employee_salary" Type="int" />
+  </EntityType>
+  <EntityType Name="Orderr">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="int" Nullable="false" />
+    <Property Name="Order_Date" Type="date" />
+    <Property Name="Order_name" Type="varchar" MaxLength="50" />
+    <Property Name="Customer_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_Id" />
+    </Key>
+    <Property Name="Product_Id" Type="int" Nullable="false" />
+    <Property Name="Product_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Product_price" Type="int" />
+    <Property Name="Sellf_Id" Type="int" />
+  </EntityType>
+  <Association Name="FK__Customer__Employ__5070F446">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="Employee_Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orderr__Customer__5441852A">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Orderr" Type="Self.Orderr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_Id" />
+      </Principal>
+      <Dependent Role="Orderr">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_supermarketModelStoreContainer">
+    <EntitySet Name="Admain" EntityType="Self.Admain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Orderr" EntityType="Self.Orderr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Customer__Employ__5070F446" Association="Self.FK__Customer__Employ__5070F446">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orderr__Customer__5441852A" Association="Self.FK__Orderr__Customer__5441852A">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Orderr" EntitySet="Orderr" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

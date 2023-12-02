@@ -1,0 +1,23 @@
+﻿<Page x:Class="supermarket_salem.end"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:supermarket_salem"
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="end" Height="572">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="285*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="198*"/>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Left" Height="588" VerticalAlignment="Top" Width="790" Source="/IMG_٢٠٢٣١١٢٩_٢١٣٧٠٦.jpg" Stretch="Fill" Grid.RowSpan="3" Margin="0,-8,0,0" />
+        <Image HorizontalAlignment="Center" Height="191" Margin="0,45,0,0" VerticalAlignment="Top" Width="494" Source="/salem2.PNG" Stretch="Fill"/>
+        <Label Content="Thank You For Visiting " HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="48" FontFamily="Baskerville Old Face" Grid.Row="1"/>
+        <Label Content="Us At Salem Supermarket" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="48" FontFamily="Baskerville Old Face" Margin="0,8,0,0" Grid.Row="2"/>
+        <Button x:Name="backtowelcome" Content="Back" HorizontalAlignment="Left" Margin="545,78,0,0" VerticalAlignment="Top" Background="#FF59B6DC" Height="51" Width="190" BorderBrush="#FF42818F" FontFamily="Baskerville Old Face" FontWeight="Bold" FontSize="20" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ContentStringFormat="{Binding ActualWidth, ElementName=button, Mode=OneWay}" Click="backtowelcome_Click" Grid.Row="2"/>
+
+    </Grid>
+</Page>
